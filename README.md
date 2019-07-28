@@ -62,6 +62,7 @@ The `Sampling Implementation.ipynb` contains a helper function that takes in the
 The helper function declared is called `downSample`. The section where the function is implemented only generates pickle files for the 12 anomalous patients, meaning that we need to copy the remaining 17 from the original pickle file directory that was created at stage one.
 
 ## Next Steps
+- Unify the accessing method for the segmentation array for sampled pickle files and original pickle files.
 - Order the scan types in the pickle file (prior to generation and sampling)
 - choose 3 patients for validation and 23 for training.
 - Build the model for training
