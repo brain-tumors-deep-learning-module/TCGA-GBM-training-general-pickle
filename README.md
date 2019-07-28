@@ -64,11 +64,14 @@ The helper function declared is called `downSample`. The section where the funct
 ## Next Steps
 - Order the scan types in the pickle file (prior to generation and sampling)
 - choose 3 patients for validation and 23 for training.
-| Training | Validation |
-| -------- | ---------- |
-| 30x26x256x256x4 | 30x3x256x256x4 |
-| 30x26x256x256x1 | 30x3x256x256x1 |
 - Build the model for training
+
+
+| Training  | Validation |
+| ------------- | ------------- |
+| 30x26x256x256x4  | 30x3x256x256x4  |
+| 30x26x256x256x1  | 30x3x256x256x1  |
+
 
 ## References
 - [TCIA TCGA-GBM Dataset](https://wiki.cancerimagingarchive.net/display/Public/TCGA-GBM)
