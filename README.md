@@ -17,5 +17,27 @@ The pickle file components is an array composed of 5 arrays. The first 4 arrays 
 of the patient corresponding to the available scan segmentations. These scan types are mainly **T1, T2, FLAIR and POST**. Each of the 4 arrays of the scan types contain inside it the slices. The 5th array is composed of 4 arrays inside it each of which coressponds to one of the original scan arrays. To put it into picture, consider the following illustration:
 
 <div align="center">
-<img src = "media/pickle-ds.jpg" width="650" height="650">
+<img src = "media/pickle-ds.jpg" width="500" height="500">
 </div>
+
+The proceure in which the generation of the patient pickle files is coded in the `Generalization.ipynb` in the following steps:
+
+- Patient folders in the segmentation dataset directory are placed in an array to iterate over them.
+- Iterating over every patient, a list of the **corrected** dicom segmentation filename is generated.
+- Pickle file opened and prepped for appending the arrays.
+- Creating a `data_array` which will contain all 5 arrays of original scans and segmentation.
+- Retreiving the slices from only the scans that have segmentation. (Filtering was through the unique scan ID).
+- For every scan an array was generated, and the slices were iterated upon. Using `pixel_array` attribute from the dicom object we were able to fetch the slice 2D array and append it to the scan array.
+- The corresponding segmentation file of the scan was accessed, and slice 2D arrays were stored.
+- The scan array is appended to the `data_array` for every scan and the segmentation array is appended last prior to closing and saving the pickle file.
+
+### Problems faced at stage one
+- **Patient Multiple Visits**  
+Two patients had more than one visit for the MRI scanning, each with a different set of scans unlike most patients where only one visit with one set of scans was available in the dataset. That meant having more than one subfolder for every visit.  
+To resolve this, a helper function `multipleVisits` was declared to return the folder name/visit instance conaining the needed scans corresponding to those from the segmentation.
+- **DICOM files sorting**
+The dicom files for the slices were numbered. However, the numbered filenames was not of correct order upon which the slices were taken. We found out that there is a DICOM attribute called `InstanceNumber` which contains the number of the slice in the correct alignment.  
+To resolve this, a helper function `dicomSort` was declared to return a dictionary where the key is the InstanceNumber and the value for each key is the corresponding dcm filename.
+- **Retreiving the segmenation for every scan**
+The segmentation for every scan is not stored in differnt dcm files for every slice like the original scans, but instead all the slice segmentation is stored in one dcm file. We have 3 types of tumor segments (*Edema*, *Non-Enhancing Tumor* and *Tumor Core*). We couldn't access the segmentaion file arrays in the same way we did with the original dataset scans.
+To resolve this, a helper function `segmentationArray` was declared to create a unified label, summing up all the 3 tumor segments we have to retreive the array corresponding to the slice at hand and finally return the unified label.
