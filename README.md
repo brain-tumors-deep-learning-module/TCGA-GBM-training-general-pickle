@@ -61,6 +61,15 @@ There is a total of 17/29 patients with arrays in the shape of (256,256). The re
 The `Sampling Implementation.ipynb` contains a helper function that takes in the pickle file of the patient with the anomalous shape and creates another pickle file for that patient with resized arrays of shape (256,256) using the `cv2.resize` function.  
 The helper function declared is called `downSample`. The section where the function is implemented only generates pickle files for the 12 anomalous patients, meaning that we need to copy the remaining 17 from the original pickle file directory that was created at stage one.
 
+## Next Steps
+- Order the scan types in the pickle file (prior to generation and sampling)
+- choose 3 patients for validation and 23 for training.
+| Training | Validation |
+| -------- | ---------- |
+| 30x26x256x256x4 | 30x3x256x256x4 |
+| 30x26x256x256x1 | 30x3x256x256x1 |
+- Build the model for training
+
 ## References
 - [TCIA TCGA-GBM Dataset](https://wiki.cancerimagingarchive.net/display/Public/TCGA-GBM)
 - [TCGA-GBM Segmentation Dataset](https://app.box.com/s/sljtgos3u2j2q33cn51se0c6scmtpng6)  
