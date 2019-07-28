@@ -68,7 +68,7 @@ The helper function declared is called `downSample`. The section where the funct
 
 
 | Training  | Validation |
-| :--- | ---: |
+| :---: | :---: |
 | 30x26x256x256x4  | 30x3x256x256x4  |
 | 30x26x256x256x1  | 30x3x256x256x1  |
 
