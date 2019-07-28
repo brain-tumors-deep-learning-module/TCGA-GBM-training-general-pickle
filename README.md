@@ -15,4 +15,5 @@ In this stage it first is important to understand how the final data file is sup
 The pickle file is named with the patient ID. For example: *TCGA-xx-xxxx.pickle*.
 The pickle file components is an array composed of 5 arrays. The first 4 arrays are the original scans
 of the patient corresponding to the available scan segmentations. These scan types are mainly **T1, T2, FLAIR and POST**. Each of the 4 arrays of the scan types contain inside it the slices. The 5th array is composed of 4 arrays inside it each of which coressponds to one of the original scan arrays. To put it into picture, consider the following illustration:
-![alt pickle file data structure][300x300](media/pickle-ds.jpg)
+![alt pickle file data structure](media/pickle-ds.jpg)
+<img src = "media/pickle-ds.jpg" width="300" height="300">
