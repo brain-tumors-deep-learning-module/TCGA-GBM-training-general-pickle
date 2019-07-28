@@ -66,12 +66,13 @@ The helper function declared is called `downSample`. The section where the funct
 - choose 3 patients for validation and 23 for training.
 - Build the model for training
 
-
+<div align="center">
 | Training  | Validation |
 | ------------- | ------------- |
 | 30x26x256x256x4  | 30x3x256x256x4  |
 | 30x26x256x256x1  | 30x3x256x256x1  |
 
+</div>
 
 ## References
 - [TCIA TCGA-GBM Dataset](https://wiki.cancerimagingarchive.net/display/Public/TCGA-GBM)
