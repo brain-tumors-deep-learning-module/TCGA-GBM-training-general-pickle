@@ -17,7 +17,7 @@ The pickle file components is an array composed of 5 arrays. The first 4 arrays 
 of the patient corresponding to the available scan segmentations. These scan types are mainly **T1, T2, FLAIR and POST**. Each of the 4 arrays of the scan types contain inside it the slices. The 5th array is composed of 4 arrays inside it each of which coressponds to one of the original scan arrays. To put it into picture, consider the following illustration:
 
 <div align="center">
-<img src = "media/pickle-ds.jpg" width="500" height="500">
+<img src = "media/pickle-ds.jpg" width="525" height="525">
 </div>
 
 The proceure in which the generation of the patient pickle files is coded in the `Generalization.ipynb` in the following steps:
@@ -42,9 +42,8 @@ The segmentation for every scan is not stored in differnt dcm file for every sli
 We have 3 types of tumor segments:
     - Edema
     - Non-Enhancing Tumor
-    - Tumor Core.
-
-To resolve this, a helper function `segmentationArray` was declared to create a unified label, summing up all the 3 tumor segments we have to retreive the array corresponding to the slice at hand and finally return the unified label.
+    - Tumor Core.  
+    To resolve this, a helper function `segmentationArray` was declared to create a unified label, summing up all the 3 tumor segments we have to retreive the array corresponding to the slice at hand and finally return the unified label.
 
 **Important Observation:** Not all the 2D arrays are of shape (256,256). This led us to go through stage two of the pickle file grooming for the training phase i.e. Sampling all the arrays to have a (256,256) slice and segmentation arrays.
 
@@ -58,10 +57,11 @@ There is a total of 17/29 patients with arrays in the shape of (256,256). The re
 - (384, 320)
 - (256, 224)
 - (256, 208)  
+
 The `Sampling Implementation.ipynb` contains a helper function that takes in the pickle file of the patient with the anomalous shape and creates another pickle file for that patient with resized arrays of shape (256,256) using the `cv2.resize` function.  
 The helper function declared is called `downSample`. The section where the function is implemented only generates pickle files for the 12 anomalous patients, meaning that we need to copy the remaining 17 from the original pickle file directory that was created at stage one.
 
 ## References
 - [TCIA TCGA-GBM Dataset](https://wiki.cancerimagingarchive.net/display/Public/TCGA-GBM)
-- [TCGA-GBM Segmentation Dataset](https://app.box.com/s/sljtgos3u2j2q33cn51se0c6scmtpng6)
+- [TCGA-GBM Segmentation Dataset](https://app.box.com/s/sljtgos3u2j2q33cn51se0c6scmtpng6)  
 **Important Observation** The Segmentation dataset hyperlink in the references is updated with segmentations to 102 and not only 29 patients.
