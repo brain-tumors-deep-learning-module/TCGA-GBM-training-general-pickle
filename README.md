@@ -61,8 +61,10 @@ There is a total of 17/29 patients with arrays in the shape of (256,256). The re
 The `Sampling Implementation.ipynb` contains a helper function that takes in the pickle file of the patient with the anomalous shape and creates another pickle file for that patient with resized arrays of shape (256,256) using the `cv2.resize` function.  
 The helper function declared is called `downSample`. The section where the function is implemented only generates pickle files for the 12 anomalous patients, meaning that we need to copy the remaining 17 from the original pickle file directory that was created at stage one.
 
+As far as the patient scans with size (256,256), their segmentation data needs to be indexed in the same way as the ones with the anomalous data. For example, to access all the segmentation scans now for every patient, we need to index it in the following manner:  
+`patient_data[4][scan][array]` instead of `patient_data[4][scan][:,:,array]`
+
 ## Next Steps
-- Unify the accessing method for the segmentation array for sampled pickle files and original pickle files.
 - Order the scan types in the pickle file (prior to generation and sampling)
 - choose 3 patients for validation and 23 for training.
 - Build the model for training
