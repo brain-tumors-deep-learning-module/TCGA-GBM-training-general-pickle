@@ -7,7 +7,7 @@ an architecture that can work efficiently and with high precision on small datas
 The architecture fitting that particular criteria was the _U-Net Architecture_.
 
 <div align="center">
-<img src = "media/u-net-architecture.png" width="525" height="525">
+<img src = "media/u-net-architecture.png">
 </div>
 
 The main idea is to supplement a usual contracting network by successive layers,
