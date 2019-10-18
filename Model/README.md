@@ -36,6 +36,15 @@ branches are:
 - Two 3x3 convolutions each followed by ReLu
 - A final 1x1 convolution is used to map each component feature vector to number of classes.
 
+---
+
+# Image Segmentation
+
+There are majorly two main processes or problems undergone as far as images are concerned. These are classification and segmentation processes. In image classification, the task of the network is to assign a label or class to an input image. On the other hand, if we want to know or define the location of an object in the image, segmentation is the way to go.
+
+Image segmentation helps us to attain knowledge of the image and understand the image at a much lower level i.e. the pixel level. This is due to the fact that the neural network in the segmentation problem is designed to output a pixel-wise mask of the image. This means each pixel of the image is given a label.
+
 ## References
 
 - Ronneberger O., Fischer P., et al [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/pdf/1505.04597.pdf)
+- [Image Segmentation in TensorFlow](https://www.tensorflow.org/tutorials/images/segmentation)
